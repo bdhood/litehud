@@ -3,9 +3,11 @@
 	"id": "litehud",
 	"version": "${version}",
 	"name": "LiteHud",
-	"description": "A lightweight HUD mod.",
-	"authors": [],
-	"contact": {},
+	"description": "A minimal, always-on-screen overlay that shows FPS, TPS, ping, coordinates, facing, and speed.",
+	"authors": ["bdhood"],
+	"contact": {
+		"issues": "https://github.com/bdhood/litehud/issues"
+	},
 	"license": "MIT",
 	"environment": "*",
 	"entrypoints": {
@@ -17,7 +19,7 @@
 		"litehud.client.mixins.json"
 	],
 	"depends": {
-		"fabricloader": ">=0.18.5",
+		"fabricloader": ">=0.18.6",
 		"minecraft": "26.1",
 		"java": ">=25",
 		"fabric-api": "*"
