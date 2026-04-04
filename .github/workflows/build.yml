@@ -26,5 +26,12 @@ jobs:
           java-version: ${{ env.JAVA_VERSION }}
       - name: Make Gradle Wrapper Executable
         run: chmod +x ./gradlew
+      - name: Set short SHA
+        run: echo "SHORT_SHA=${GITHUB_SHA::8}" >> $GITHUB_ENV
       - name: Build
-        run: ./gradlew clean build -Pmod_version="${GITHUB_SHA::8}"
+        run: ./gradlew clean build -Pmod_version="${SHORT_SHA}"
+      - name: Upload Artifact
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: litehud-${{ env.SHORT_SHA }}
+          path: build/libs/!(*-@(dev|sources|javadoc)).jar

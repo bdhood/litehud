@@ -11,6 +11,8 @@ permissions:
 jobs:
   publish:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
       - name: Checkout Repository
         uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
@@ -25,6 +27,15 @@ jobs:
         run: chmod +x ./gradlew
       - name: Build
         run: ./gradlew clean build -Pmod_version="${GITHUB_REF_NAME#v}"
+      - name: Upload Artifact
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: litehud-${{ github.ref_name }}
+          path: build/libs/!(*-@(dev|sources|javadoc)).jar
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@153bb8e04406b158c6c84fc1615b65b24149a1fe # v2.6.1
+        with:
+          files: build/libs/!(*-@(dev|sources|javadoc)).jar
       - name: Publish to CurseForge
         uses: Kir-Antipov/mc-publish@995edadc13559a8b28d0b7e6571229f067ec7659 # v3.3.0
         with:
