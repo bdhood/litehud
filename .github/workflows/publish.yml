@@ -52,7 +52,4 @@ jobs:
         with:
           curseforge-id: ${{ secrets.CURSEFORGE_ID }}
           curseforge-token: ${{ secrets.CURSEFORGE_TOKEN }}
-          files: |
-            build/libs/litehud-*.jar
-            !build/libs/litehud-*-sources.jar
-            !build/libs/litehud-*-dev.jar
+          files: build/libs/litehud-*[0-9].jar
