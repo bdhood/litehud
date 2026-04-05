@@ -16,11 +16,11 @@ public class LiteHudSettings {
 
     private static LiteHudSettings instance;
 
-    public int textColor       = 0xFFAACC44;
+    public int textColor       = 0xFFEEEEEE;
     public int outlineColor    = 0xFFAACC44;
-    public int backgroundColor = 0x80000000;
-    public int toggleKey   = GLFW.GLFW_KEY_B;
-    public int settingsKey = GLFW.GLFW_KEY_H;
+    public int backgroundColor = 0xA0000000;
+    public int toggleKey   = GLFW.GLFW_KEY_N;
+    public int settingsKey = GLFW.GLFW_KEY_B;
 
     public boolean showTitle  = true;
     public boolean showFps    = true;

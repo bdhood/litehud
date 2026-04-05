@@ -11,8 +11,8 @@ LiteHud is a minimal, always-on-screen overlay for Fabric that gives you the sta
 - Speed — movement speed in blocks per second
 
 ## Usage
-- `H` — open settings screen
-- `B` — toggle HUD on/off
+- `B` — open settings screen
+- `N` — toggle HUD on/off
 
 ## Development
 
