@@ -1,34 +1,34 @@
 from PIL import Image, ImageDraw, ImageFilter
 
-size = 128
+size = 400
 img = Image.new('RGBA', (size, size), (0,0,0,0))
 draw = ImageDraw.Draw(img)
 
-r = 18
+r = 56
 draw.rounded_rectangle([0, 0, size-1, size-1], radius=r, fill=(48, 56, 76, 255))
-draw.rounded_rectangle([2, 2, size-3, size-3], radius=r-2, fill=(16, 18, 24, 255))
+draw.rounded_rectangle([6, 6, size-7, size-7], radius=r-6, fill=(16, 18, 24, 255))
 
-bar = 9
-lw = 32
-hw = 32
-gap = 11
+bar = 28
+lw = 100
+hw = 100
+gap = 34
 total_w = lw + gap + hw
-lh = 54
+lh = 169
 lx = (size - total_w) // 2
-ty = (size - lh) // 2 - 2
+ty = (size - lh) // 2 - 6
 hx = lx + lw + gap
 
 # Glow
 glow = Image.new('RGBA', (size, size), (0,0,0,0))
 gd = ImageDraw.Draw(glow)
 gc = (90, 230, 160, 100)
-gd.rectangle([lx-2, ty-2, lx+bar+1, ty+lh+1], fill=gc)
-gd.rectangle([lx-2, ty+lh-bar-2, lx+lw+1, ty+lh+1], fill=gc)
-gd.rectangle([hx-2, ty-2, hx+bar+1, ty+lh+1], fill=gc)
-gd.rectangle([hx+hw-bar-2, ty-2, hx+hw+1, ty+lh+1], fill=gc)
+gd.rectangle([lx-6, ty-6, lx+bar+3, ty+lh+3], fill=gc)
+gd.rectangle([lx-6, ty+lh-bar-6, lx+lw+3, ty+lh+3], fill=gc)
+gd.rectangle([hx-6, ty-6, hx+bar+3, ty+lh+3], fill=gc)
+gd.rectangle([hx+hw-bar-6, ty-6, hx+hw+3, ty+lh+3], fill=gc)
 mid = ty + lh//2 - bar//2
-gd.rectangle([hx-2, mid-2, hx+hw+1, mid+bar+1], fill=gc)
-glow = glow.filter(ImageFilter.GaussianBlur(radius=4))
+gd.rectangle([hx-6, mid-6, hx+hw+3, mid+bar+3], fill=gc)
+glow = glow.filter(ImageFilter.GaussianBlur(radius=12))
 img = Image.alpha_composite(img, glow)
 
 # Gradient letters
@@ -51,7 +51,7 @@ img = Image.alpha_composite(img, sharp)
 al = Image.new('RGBA', (size, size), (0,0,0,0))
 ad = ImageDraw.Draw(al)
 ac = (90, 190, 140, 180)
-bl, bt, mg = 7, 2, 9
+bl, bt, mg = 22, 6, 28
 corners = [
     (mg, mg, mg+bl, mg+bt, mg, mg, mg+bt, mg+bl),
     (size-1-mg-bl, mg, size-1-mg, mg+bt, size-1-mg-bt, mg, size-1-mg, mg+bl),
