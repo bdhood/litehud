@@ -2,6 +2,9 @@
 
 LiteHud is a minimal, always-on-screen overlay for Fabric that gives you the stats you actually care about — without the bloat.
 
+<img src="assets/litehud.png">
+<img src="assets/litehud_settings.png" width="300"/>
+
 ## Features
 - FPS — real-time frame rate
 - TPS — server tick rate, averaged over the last 10 ticks
