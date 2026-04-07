@@ -48,7 +48,7 @@ public class LiteHud implements ClientModInitializer {
 			boolean keyDown = GLFW.glfwGetKey(
 				client.getWindow().handle(), LiteHudSettings.get().toggleKey
 			) == GLFW.GLFW_PRESS;
-			if (keyDown && !lastKeyState) {
+			if (keyDown && !lastKeyState && client.screen == null) {
 				visible = !visible;
 			}
 			lastKeyState = keyDown;
