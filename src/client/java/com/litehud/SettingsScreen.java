@@ -29,7 +29,7 @@ public class SettingsScreen extends Screen {
     private int pendingSettingsKey;
 
     // Right column — line visibility
-    private static final String[] LINE_NAMES = {"Title", "FPS", "TPS", "Ping", "XYZ", "Facing", "Speed"};
+    private static final String[] LINE_NAMES = {"Title", "FPS", "TPS", "Ping", "XYZ", "Facing", "Speed", "Mob Count"};
     private final boolean[] pendingVisible = new boolean[LINE_NAMES.length];
     private final Button[]  visibleButtons = new Button[LINE_NAMES.length];
 
@@ -49,6 +49,7 @@ public class SettingsScreen extends Screen {
         pendingVisible[4] = s.showXyz;
         pendingVisible[5] = s.showFacing;
         pendingVisible[6] = s.showSpeed;
+        pendingVisible[7] = s.showMobCount;
     }
 
     @Override
@@ -159,13 +160,14 @@ public class SettingsScreen extends Screen {
         s.backgroundColor = pendingBgColor;
         s.toggleKey   = pendingToggleKey;
         s.settingsKey = pendingSettingsKey;
-        s.showTitle   = pendingVisible[0];
-        s.showFps     = pendingVisible[1];
-        s.showTps     = pendingVisible[2];
-        s.showPing    = pendingVisible[3];
-        s.showXyz     = pendingVisible[4];
-        s.showFacing  = pendingVisible[5];
-        s.showSpeed   = pendingVisible[6];
+        s.showTitle    = pendingVisible[0];
+        s.showFps      = pendingVisible[1];
+        s.showTps      = pendingVisible[2];
+        s.showPing     = pendingVisible[3];
+        s.showXyz      = pendingVisible[4];
+        s.showFacing   = pendingVisible[5];
+        s.showSpeed    = pendingVisible[6];
+        s.showMobCount     = pendingVisible[7];
         s.save();
         onClose();
     }

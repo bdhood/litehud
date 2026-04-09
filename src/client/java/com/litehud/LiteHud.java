@@ -117,6 +117,12 @@ public class LiteHud implements ClientModInitializer {
 			if (s.showFacing) lines.add(String.format("Facing: %s %6.1f / %3.1f",
 				cardinal, yaw, mc.player.getXRot()));
 			if (s.showSpeed)  lines.add(String.format("Speed: %.2f b/s", speedBps));
+			if (s.showMobCount && mc.level != null) {
+				int mobCount = 0;
+				for (var e : mc.level.entitiesForRendering())
+					if (e instanceof net.minecraft.world.entity.Mob) mobCount++;
+				lines.add(String.format("Mob Count: %d", mobCount));
+			}
 			if (lines.isEmpty()) return;
 
 			// Measure and draw background box

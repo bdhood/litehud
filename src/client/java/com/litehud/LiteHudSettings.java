@@ -22,13 +22,14 @@ public class LiteHudSettings {
     public int toggleKey   = GLFW.GLFW_KEY_N;
     public int settingsKey = GLFW.GLFW_KEY_B;
 
-    public boolean showTitle  = true;
-    public boolean showFps    = true;
-    public boolean showTps    = true;
-    public boolean showPing   = true;
-    public boolean showXyz    = true;
-    public boolean showFacing = true;
-    public boolean showSpeed  = true;
+    public boolean showTitle    = true;
+    public boolean showFps      = true;
+    public boolean showTps      = true;
+    public boolean showPing     = true;
+    public boolean showXyz      = true;
+    public boolean showFacing   = true;
+    public boolean showSpeed    = true;
+    public boolean showMobCount     = true;
 
     public static LiteHudSettings get() {
         if (instance == null) instance = load();
