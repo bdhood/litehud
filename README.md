@@ -12,6 +12,7 @@ LiteHud is a minimal, always-on-screen overlay for Fabric that gives you the sta
 - XYZ Coordinates — your exact position, updated every tick
 - Facing — cardinal direction, yaw, and pitch
 - Speed — movement speed in blocks per second
+- Mob Count — number of mobs currently loaded near you
 
 ## Usage
 - `B` — open settings screen
