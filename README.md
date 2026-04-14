@@ -6,13 +6,14 @@ LiteHud is a minimal, always-on-screen overlay for Fabric that gives you the sta
 <img src="assets/litehud_settings.png" width="300"/>
 
 ## Features
-- FPS — real-time frame rate
-- TPS — server tick rate, averaged over the last 10 ticks
-- Ping — your latency to the current server (multiplayer only)
-- XYZ Coordinates — your exact position, updated every tick
-- Facing — cardinal direction, yaw, and pitch
-- Speed — movement speed in blocks per second
-- Mob Count — number of mobs currently loaded near you
+- FPS - real-time frame rate
+- TPS - server tick rate, averaged over the last 10 ticks
+- Ping - your latency to the current server (multiplayer only)
+- XYZ Coordinates - your exact position, updated every tick
+- Facing - cardinal direction, yaw, and pitch
+- Speed - movement speed in blocks per second
+- Mob Count - number of mobs currently loaded near you
+- Biome - The current Biome the player is in
 
 ## Usage
 - `B` — open settings screen
