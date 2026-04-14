@@ -123,6 +123,22 @@ public class LiteHud implements ClientModInitializer {
 					if (e instanceof net.minecraft.world.entity.Mob) mobCount++;
 				lines.add(String.format("Mob Count: %d", mobCount));
 			}
+			if (s.showBiome && mc.level != null && mc.player != null) {
+				String biomeName = mc.level.getBiome(mc.player.blockPosition())
+					.unwrapKey()
+					.map(k -> {
+						String path = k.identifier().getPath();
+						String[] parts = path.split("_");
+						StringBuilder sb = new StringBuilder();
+						for (String p : parts) {
+							if (!sb.isEmpty()) sb.append(' ');
+							sb.append(Character.toUpperCase(p.charAt(0))).append(p.substring(1));
+						}
+						return sb.toString();
+					})
+					.orElse("Unknown");
+				lines.add("Biome: " + biomeName);
+			}
 			if (lines.isEmpty()) return;
 
 			// Measure and draw background box

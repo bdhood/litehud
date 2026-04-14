@@ -29,7 +29,7 @@ public class SettingsScreen extends Screen {
     private int pendingSettingsKey;
 
     // Right column — line visibility
-    private static final String[] LINE_NAMES = {"Title", "FPS", "TPS", "Ping", "XYZ", "Facing", "Speed", "Mob Count"};
+    private static final String[] LINE_NAMES = {"Title", "FPS", "TPS", "Ping", "XYZ", "Facing", "Speed", "Mob Count", "Biome"};
     private final boolean[] pendingVisible = new boolean[LINE_NAMES.length];
     private final Button[]  visibleButtons = new Button[LINE_NAMES.length];
 
@@ -50,6 +50,7 @@ public class SettingsScreen extends Screen {
         pendingVisible[5] = s.showFacing;
         pendingVisible[6] = s.showSpeed;
         pendingVisible[7] = s.showMobCount;
+        pendingVisible[8] = s.showBiome;
     }
 
     @Override
@@ -92,21 +93,22 @@ public class SettingsScreen extends Screen {
         }).bounds(lx, f5, 120, 20).build();
         addRenderableWidget(settingsKeyButton);
 
-        // Save/Cancel centered on cx
-        addRenderableWidget(Button.builder(Component.literal("Save"), btn -> save())
-            .bounds(cx - 62, f5 + 28, 58, 20).build());
-        addRenderableWidget(Button.builder(Component.literal("Cancel"), btn -> onClose())
-            .bounds(cx + 4,  f5 + 28, 58, 20).build());
-
         // Right column — visibility toggles
         for (int i = 0; i < LINE_NAMES.length; i++) {
             final int idx = i;
             visibleButtons[i] = Button.builder(visibleLabel(i), btn -> {
                 pendingVisible[idx] = !pendingVisible[idx];
                 visibleButtons[idx].setMessage(visibleLabel(idx));
-            }).bounds(rx, f1 + i * 22, 85, 20).build();
+            }).bounds(rx, f1 + i * 20, 85, 20).build();
             addRenderableWidget(visibleButtons[i]);
         }
+
+        // Save/Cancel — below whichever column is taller
+        int saveCancelY = Math.max(f5 + 28, f1 + LINE_NAMES.length * 20 + 8);
+        addRenderableWidget(Button.builder(Component.literal("Save"), btn -> save())
+            .bounds(cx - 62, saveCancelY, 58, 20).build());
+        addRenderableWidget(Button.builder(Component.literal("Cancel"), btn -> onClose())
+            .bounds(cx + 4,  saveCancelY, 58, 20).build());
     }
 
     private static String version() {
@@ -168,6 +170,7 @@ public class SettingsScreen extends Screen {
         s.showFacing   = pendingVisible[5];
         s.showSpeed    = pendingVisible[6];
         s.showMobCount     = pendingVisible[7];
+        s.showBiome        = pendingVisible[8];
         s.save();
         onClose();
     }
@@ -196,7 +199,8 @@ public class SettingsScreen extends Screen {
         int f5 = f4 + row;
 
         // Panel — equal 20px padding on each side of content (lx to rx+85)
-        graphics.fill(lx - 20, cy - 120, rx + 105, f5 + 54, 0xC0000000);
+        int saveCancelY = Math.max(f5 + 28, f1 + LINE_NAMES.length * 20 + 8);
+        graphics.fill(lx - 20, cy - 120, rx + 105, saveCancelY + 46, 0xC0000000);
 
         // Title — centered on cx
         graphics.text(font, title, cx - font.width(title) / 2, cy - 110, 0xFFFFFFFF, true);

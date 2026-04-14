@@ -29,8 +29,8 @@ public class LiteHudSettings {
     public boolean showXyz      = true;
     public boolean showFacing   = true;
     public boolean showSpeed    = true;
-    public boolean showMobCount     = true;
-
+    public boolean showMobCount = true;
+    public boolean showBiome    = true;
     public static LiteHudSettings get() {
         if (instance == null) instance = load();
         return instance;
